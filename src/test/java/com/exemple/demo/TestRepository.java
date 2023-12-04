@@ -1,4 +1,4 @@
-package com.exemple.demoTest;
+package com.exemple.demo;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -11,34 +11,37 @@ import com.exemple.demo.repository.ToDoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 @DataJpaTest
 class TestRepository {
-	@Autowired
-	private ToDoRepository todoRepository;
-	@Test
+    @Autowired
+    private ToDoRepository todoRepository;
+
+    @Test
     public void givenTodo_whenSave_thenFindAll() {
-     // given
-		ToDo t1 = new ToDo("Clean the code",true);
-        ToDo t2 = new ToDo("Deploy the jar",true);
+        // given
+        ToDo t1 = new ToDo("Clean the code", true);
+        ToDo t2 = new ToDo("Deploy the jar", true);
         todoRepository.save(t2);
         todoRepository.save(t1);
         // when
         List<ToDo> todoList = todoRepository.findAll();
-        
+
         // then
-        assertThat(6,equalTo(todoList.size()));
+        assertThat(6, equalTo(todoList.size()));
     }
-	@Test
+
+    @Test
     public void givenTodo_whenSave_thenGetOk() {
-     // given
-        ToDo t2 = new ToDo(2,"clean the code",true);
+        // given
+        ToDo t2 = new ToDo(2, "clean the code", true);
         todoRepository.save(t2);
-     // when
+        // when
         ToDo t3 = todoRepository.findById(new Long(t2.getId())).get();
         // then
         assertEquals("clean the code", t3.getText());
-        assertThat(t3.getId(),equalTo(t2.getId()));
-        assertThat(t3.getId(),is(2L));
+        assertThat(t3.getId(), equalTo(t2.getId()));
+        assertThat(t3.getId(), is(2L));
     }
 
 	/*@Test

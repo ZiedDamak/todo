@@ -1,15 +1,12 @@
-package com.exemple.demoTest;
+package com.exemple.demo;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat; 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.exemple.demo.entity.ToDo;
 import com.exemple.demo.repository.ToDoRepository;
